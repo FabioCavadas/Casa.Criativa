@@ -15,6 +15,9 @@
         Posicionamentos
             
 */
+
+/*GLOBAL*/
+
 body {
     background: #e5e5e5;
     color:#25282B;   
@@ -24,6 +27,9 @@ body {
     margin: 0;
 }
 
+body.hideScroll {
+    overflow: hidden;
+}
 
 a {
     color:#ff5E84;
@@ -44,20 +50,45 @@ p, .description {
 
 }
 
+.button {    
+    background:#ff5E84 ;
+    color: white;
+
+    width: 150px;
+    height: 40px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0px 8px 16px #ff5E8432;
+}
+
+.button:hover {
+    background-color: #0984e3;
+    text-decoration: none;
+}
+
+/*Padrão*/
+
 #container {
     width: 80;
     max-width: 980px;
 
     margin: 40px auto;    
 
-    display: flex;
-   
+    display: flex;   
 }
 
 #intro {
     width: 300px;
 
-    margin-right: 20px;
+    margin-right: 64px;
 }
 
 main {
@@ -89,21 +120,6 @@ button {
 
 button:hover {
     text-decoration: underline;
-}
-
-button.fat {
-    color: white;
-    background:#ff5E84 ;
-
-    width: 150px;
-    height: 40px;
-
-    border-radius: 6px;
-    box-shadow: 0px 8px 16px rgba(255, 0, 92, 0.16);
-}
-
-button.fat:hover {
-    text-decoration: none;
 }
 
 footer {
@@ -160,9 +176,9 @@ footer a {
 
     position: absolute;
     top: 0;
-
-    width: 100vw;
-    height: 100vh;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
     display: flex;
     justify-content: center;     
@@ -170,8 +186,12 @@ footer a {
     transition: 400ms;
 }
 
+#modal.addScroll {
+    overflow: auto;
+}
+
 #modal .content {
-    margin-left: 128px;
+    margin-left: 15%;
 
     color: white;
 } 
@@ -186,7 +206,7 @@ footer a {
     width: 80%;
     max-width: 800px;
 
-    margin: 0 auto;
+    margin: 0 auto 15%;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -276,8 +296,7 @@ form button:hover {
 
     color: white;
 
-    text-decoration: none;
-    
+    text-decoration: none;    
 }
 
 #modal.hide {
@@ -285,4 +304,71 @@ form button:hover {
     visibility: hidden;
 }
 
+/* IDEIA.HTML */
+#page-ideas #container {
+    display: block;
+}
+
+#page-ideas header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-ideas nav {
+    display: flex;
+    align-items: center;    
+}
+
+#page-ideas nav  li {
+   list-style-type: none;
+   
+   margin-right: 16px;
+}
+
+#page-ideas nav  li a {
+    color: #25282B;
+}
+
+#page-ideas nav  li a.button {
+    color: white;
+}
+
+
+#page-ideas nav li:last-child { 
+    margin: 0;   
+ }
+ 
+section#title {
+    text-align: center; 
+    
+    margin: 64px;
+}
+
+section#title p {
+    opacity: 0.7;
+    margin: 0;
+}
+
+section#title h1 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+section#ideas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+section#ideas .idea{
+    margin: 0;
+}
+
+section#title,
+section#ideas,
+footer {
+    margin-top: 64px;
+}
 

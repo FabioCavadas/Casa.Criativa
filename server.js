@@ -1,54 +1,13 @@
 //Express  para criar e configurar o Servidor
 const express= require("express")
 const server = express()
-
-const ideas = [
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729007.svg",
-        title:"Cursos de Programação",
-        category:"Estudo",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    },
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729005.svg",
-        title:"Exercícios",
-        category:"Saúde",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    },
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729027.svg",
-        title:"Meditação",
-        category:"Mentalidade",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    },
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729032.svg",
-        title:"Karaokê",
-        category:"Diversão em Família",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    },
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729038.svg",
-        title:"Pintura",
-        category:"Criatividade",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    },
-    {
-        img:"https://image.flaticon.com/icons/svg/2729/2729048.svg",
-        title:"Recortes",
-        category:"Criatividade",
-        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque consequuntur aliquam omnis cum fuga recusandae, illo doloribus quae optio perferendis iste cumque sint voluptate dolor praesentium modi dolores, accusantium aut?",
-        url:"https://rocketseat.com.br"
-    }
-]
+const db = require("./db")
 
 //configurar arquivos estáticos (css,scripts, images)
 server.use(express.static("public"))
+
+//habilitar uso do req.body
+server.use(express.urlencoded({ extended: true }))
 
 //configuração do Nunjucks
 const nunjucks = require("nunjucks")
@@ -60,26 +19,71 @@ nunjucks.configure("views",{
 //Criando rota /
 //Capturando o pedido do cliente e respondendo
 server.get("/", function(req, res){
-
-    const reversedIdeas = [...ideas].reverse()//evita reverte toda vez q atualiza a página, array espalha as ideias, não é a mesma referencia de ideas
-
-    let lastIdeas = []
-    for(let idea of reversedIdeas){ // inverte a exibição das últimas ideias
-        if(lastIdeas.length < 2) {
-            lastIdeas.push(idea)
+    db.all(`SELECT * FROM ideas`, function(err, rows){
+        if (err) {
+            console.log(err)
+            return res.send("Erro no Banco de Dados!")
         }
-    }
+    
+       const reversedIdeas = [...rows].reverse()
 
-    //console.log(lastIdeas)
-    return res.render("index.html", { ideas:lastIdeas })
+       let lastIdeas = []
+       for(let idea of reversedIdeas){
+           if(lastIdeas.length < 2) {
+               lastIdeas.push(idea)
+           }
+       }   
+       //console.log(lastIdeas)
+       return res.render("index.html", { ideas:lastIdeas })
+
+    })
+    
 })
 
 server.get("/ideias", function(req, res){
 
-    const reversedIdeas = [...ideas].reverse()
+    db.all(`SELECT * FROM ideas`, function(err, rows){
+        if (err) {
+            console.log(err)
+            return res.send("Erro no Banco de Dados!")
+        }
 
-    return res.render("ideias.html", { ideas: reversedIdeas})
+        const reversedIdeas = [...rows].reverse()
+        return res.render("ideias.html", { ideas: reversedIdeas})
+    })
 })
+
+server.post("/", function(req, res){
+    //Inserir dado na tabela
+    const query = `
+        INSERT INTO ideas(
+            image,
+            title,
+            category,
+            description,
+            link             
+        )VALUES (?,?,?,?,?);
+    `
+
+    const values = [
+        req.body.image,
+        req.body.title,
+        req.body.category,
+        req.body.description,
+        req.body.link,
+    ]
+
+    db.run(query, values, function(err){
+        if (err) {
+            console.log(err)
+            return res.send("Erro no Banco de Dados!")
+        }
+
+        return res.redirect("/ideias")
+    })
+    
+})
+
 //Liguei o servidor na porta 3000
 server. listen(3000)
 

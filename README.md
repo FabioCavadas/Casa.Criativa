@@ -3,24 +3,24 @@ Projeto para consultar e cadastrar idéias de atividades a serem realizadas no a
 
 ## WS Dev Especial - Rocketseat
 
-## Tecnologias Utilizadas
+### Tecnologias Utilizadas
 JavaScript
 Html
 CSS
 
-# Engine
+### Engine
 Node.js
 
-# Extensions
+### Extensions
 Live Server
 Sqlite3
 
-## Framework
-![Express](https://www.npmjs.com/package/express)
+### Framework
+[![Express]](https://www.npmjs.com/package/express)
 Nodemon
 Nunjucks
 
-## Install
+### Install
 npm install -g live-server
 npm install sqlite3
 npm install express

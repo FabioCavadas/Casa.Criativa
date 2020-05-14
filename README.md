@@ -16,9 +16,17 @@ git
 <p>Sqlite3(https://www.npmjs.com/package/sqlite3)</p>
 
 ### Framework
-<p>[Express](https://www.npmjs.com/package/express)</p>
-<p>[Nodemon](https://www.npmjs.com/package/nodemon)</p>
-<p>[Nunjucks](https://www.npmjs.com/package/nunjucks)</p>
+<ul>
+    <li>
+        <strong><a href="https://www.npmjs.com/package/express)" rel="nofollow">Express</a></strong>
+    </li>
+    <li>
+        <strong><a href="https://www.npmjs.com/package/nodemon" rel="nofollow">Nodemon</a></strong>
+    </li>
+    <li>
+        <strong><a href="https://www.npmjs.com/package/nunjucks" rel="nofollow">Nunjucks</a></strong>
+    </li>
+</ul>
 
 ### Install
 <p>npm install -g live-server</p>

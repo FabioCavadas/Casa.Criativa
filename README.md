@@ -2,18 +2,26 @@
 <p>Projeto para consultar e cadastrar idéias de atividades a serem realizadas no atual cenário mundial.</p>
 
 ## WS Dev Especial - Rocketseat
-git
+
 ### Tecnologias Utilizadas
 <p>JavaScript</p>
 <p>Html</p>
 <p>CSS</p>
 
 ### Engine
-<p>Node.js - https://nodejs.org/en/</p>
+<li>
+    <strong><a href="https://nodejs.org/en/" rel="nofollow">Node.js</a></strong>
+</li>
 
 ### Extensions
-<p>Live Server(https://www.npmjs.com/package/live-server)</p>
-<p>Sqlite3(https://www.npmjs.com/package/sqlite3)</p>
+<ul>
+    <li>
+        <strong><a href="https://www.npmjs.com/package/live-server)" rel="nofollow">Live Server</a></strong>
+    </li>
+    <li>
+        <strong><a href="https://www.npmjs.com/package/sqlite3" rel="nofollow">Sqlite3</a></strong>
+    </li>    
+</ul>
 
 ### Framework
 <ul>

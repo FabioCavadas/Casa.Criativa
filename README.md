@@ -9,14 +9,16 @@
 <p>CSS</p>
 
 ### Engine
-<li>
-    <strong><a href="https://nodejs.org/en/" rel="nofollow">Node.js</a></strong>
-</li>
+<ul>
+    <li>
+        <strong><a href="https://nodejs.org/en/" rel="nofollow">Node.js</a></strong>
+    </li>
+</ul>
 
 ### Extensions
 <ul>
     <li>
-        <strong><a href="https://www.npmjs.com/package/live-server)" rel="nofollow">Live Server</a></strong>
+        <strong><a href="https://www.npmjs.com/package/live-server" rel="nofollow">Live Server</a></strong>
     </li>
     <li>
         <strong><a href="https://www.npmjs.com/package/sqlite3" rel="nofollow">Sqlite3</a></strong>
@@ -26,7 +28,7 @@
 ### Framework
 <ul>
     <li>
-        <strong><a href="https://www.npmjs.com/package/express)" rel="nofollow">Express</a></strong>
+        <strong><a href="https://www.npmjs.com/package/express" rel="nofollow">Express</a></strong>
     </li>
     <li>
         <strong><a href="https://www.npmjs.com/package/nodemon" rel="nofollow">Nodemon</a></strong>
